@@ -1,3 +1,5 @@
+import java.lang.annotation.Target;
+import java.util.*;
 class Node<T> {
     T val;
     Node<T> next;
@@ -6,11 +8,20 @@ class Node<T> {
       this.val = val;
       this.next = null;
     }
+
   }
   
-  class Source {
+ public class Source {
     public static <T> boolean linkedListFind(Node<T> head, T target) {
       // todo
+      Node<T> current = head;
+  
+      while(current != null){
+        if (current.val.equals(target)){
+          return true;
+        }
+        current = current.next;
+      }
       return false;
     }
     
@@ -27,6 +38,11 @@ class Node<T> {
         // a -> b -> c -> d
 
         System.out.println(Source.linkedListFind(a, "c"));
+        Node<Integer> node1 = new Node<>(42);
+
+        // 42
+
+        System.out.println(Source.linkedListFind(node1, 100)); // false
         
     }
 

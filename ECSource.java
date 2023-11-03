@@ -11,7 +11,15 @@ class Node<T> {
 class ECSource {
   public static <T> T getNodeValue(Node<T> head, int index) {
     // todo - note the return type, but don't overthink it
-    return;
+    if (head == null || index < 0) throw new IllegalArgumentException();
+    for (int i = 0; i < index && head != null; ++i) {
+      head = head.next;
+      }
+      if (index >= 0 && head != null) {
+        return head.val;
+      } else {
+        return null;
+      }
   }
   
   public static void main(String[] args) {
@@ -24,6 +32,18 @@ class ECSource {
 
     // banana -> mango -> kiwi
 
-    System.out.println(ECSource.getNodeValue(node1, 1));
+    System.out.println(ECSource.getNodeValue(node1, 0));
+    Node<String> a = new Node<>("a");
+    Node<String> b = new Node<>("b");
+    Node<String> c = new Node<>("c");
+    Node<String> d = new Node<>("d");
+    
+    a.next = b;
+    b.next = c;
+    c.next = d;
+    
+    // a -> b -> c -> d
+    
+    System.out.println(ECSource.getNodeValue(a, 7));; // null  
   }
 }
